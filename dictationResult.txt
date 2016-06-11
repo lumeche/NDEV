@@ -1,1 +1,1 @@
-LOL I am testing this application
+Hello world and I'm testing this application

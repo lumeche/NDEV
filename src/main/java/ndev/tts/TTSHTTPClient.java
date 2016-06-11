@@ -261,7 +261,6 @@ public class TTSHTTPClient {
 		// Attempt to write to file...
 		try {
 			fos = new FileOutputStream(file);
-
 			while((len = in.read(buffer)) > 0){
 				fos.write(buffer, 0 , len);
 			}
