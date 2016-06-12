@@ -39,9 +39,10 @@ import ndev.util.ConnectionDelegate;
  */
 public class TextToSpeech implements NDEVTester {
 	Logger logger = LoggerFactory.getLogger(TextToSpeech.class);
-	ConnectionDelegate connDelegate = new ConnectionDelegate();
+	ConnectionDelegate connDelegate;
 
-	public void runTest() throws Exception {
+	public void runTest(String nmaid,String appKey) throws Exception {
+		connDelegate = new ConnectionDelegate(nmaid,appKey);
 		HttpClient httpClient = connDelegate.buildHTTPClient(Config.PORT);
 		URI uri = buildUri();
 		HttpPost post = getHeader(uri);

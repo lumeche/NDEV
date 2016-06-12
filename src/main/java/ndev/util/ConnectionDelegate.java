@@ -21,11 +21,22 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import ndev.Main;
 import ndev.config.Config;
 
 public class ConnectionDelegate {
-
+	private Logger logger = LoggerFactory.getLogger(ConnectionDelegate.class);
+	
+	private String nmaid;
+	private String appKey;
+	
+	public ConnectionDelegate(String nmaid,String appKey){
+		this.nmaid=nmaid;
+		this.appKey=appKey;
+	}
 	public HttpClient buildHTTPClient(int port) throws KeyManagementException, NoSuchAlgorithmException {
 		HttpClient httpClient = new DefaultHttpClient();
 		Scheme schema = buildHttpSchema(this.buildHttpParams(), port);
@@ -65,8 +76,10 @@ public class ConnectionDelegate {
 	
 	public List<NameValuePair> getAppParams() {
 		List<NameValuePair> qparams = new ArrayList<NameValuePair>();
-		qparams.add(new BasicNameValuePair("appId", Config.APP_ID));
-		qparams.add(new BasicNameValuePair("appKey", Config.APP_KEY));
+		logger.info("NMAID:{}",this.nmaid);
+		logger.info("APP_KEYl {}",this.appKey);
+		qparams.add(new BasicNameValuePair("appId", this.nmaid));
+		qparams.add(new BasicNameValuePair("appKey", this.appKey));
 		qparams.add(new BasicNameValuePair("id", Config.DEVICE_ID));
 		return qparams;
 	}

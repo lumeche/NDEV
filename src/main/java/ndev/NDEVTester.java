@@ -2,5 +2,5 @@ package ndev;
 
 public interface NDEVTester {
 
-	void runTest() throws Exception;
+	void runTest(String nmaid,String appKey) throws Exception;
 }

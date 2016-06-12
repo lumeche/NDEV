@@ -30,8 +30,9 @@ import ndev.util.streamer.FileAudioStreamer;
 
 public class Dictation implements NDEVTester {
 	Logger logger = LoggerFactory.getLogger(Dictation.class);
-	ConnectionDelegate connDelegate=new ConnectionDelegate();
-	public void runTest() throws Exception {		
+	ConnectionDelegate connDelegate;
+	public void runTest(String nmaid,String appKey) throws Exception {
+		connDelegate=new ConnectionDelegate(nmaid,appKey);
 		HttpClient client = connDelegate.buildHTTPClient(Config.PORT);
 		HttpEntity entity = this.buildAudioStream(Config.TTS_FILE, false);
 		HttpPost post = this.buildPostRequest(Config.LANGUAGE);

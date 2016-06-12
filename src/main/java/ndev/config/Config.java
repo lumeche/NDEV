@@ -2,8 +2,6 @@ package ndev.config;
 //TODO: Move this to a property file
 
 public class Config {
-	public static String APP_ID = "NMDPTRIAL_lumeche_hotmail_com20160601074225";
-	public static String APP_KEY = "8116135eeec700b7ca236f9e1b9457c87c2babdaab2d54ec6ae6efd99c3c061e52197c40e17df7aba06649bbfaa18376cc2e50775ca463c68b529f278ea545e0";
 	public static String DEVICE_ID = "0000";
 	
 	public static String VOICE = "Samantha";
